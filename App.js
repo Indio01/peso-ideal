@@ -44,6 +44,8 @@ export default function App() {
       <Pressable onPress={calcular}>
         <Text>calcular peso ideal</Text>
       </Pressable>
+
+      <Text>{peso}</Text>
     </View>
   );
 }
