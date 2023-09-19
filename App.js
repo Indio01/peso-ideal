@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
+import styles from './styles';
 
 //http://www.conversorfacil.com.br/calcular/peso-ideal
 
@@ -9,18 +10,17 @@ export default function App() {
   
   const [sexo, setSexo] = useState('Homem');
   const [altura, setAltura] = useState('')
-  const [k, setK] = useState(4);
-  const [peso, setPeso] = useState('')
+  const [indice, setIndice] = useState(4);
+  const [pesoIdeal, setPesoIdeal] = useState('');
 
   const calcular = () => {
     if(sexo == "Homem"){
-      setK(4)
+      setIndice(4)
     }else{
-      setK(2)
+      setIndice(2)
     };
 
-    setPeso((parseFloat(altura) - 100) - ((parseFloat(altura) - 150)/parseFloat(k)))
-    console.log(peso)
+    setPesoIdeal((parseFloat(altura) - 100) - ((parseFloat(altura) - 150)/parseFloat(indice)));
   }
 
   return (
@@ -45,16 +45,7 @@ export default function App() {
         <Text>calcular peso ideal</Text>
       </Pressable>
 
-      <Text>{peso}</Text>
+      <Text>{`seu peso ideal é de: ${pesoIdeal}`}</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
