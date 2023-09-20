@@ -25,14 +25,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Altura:</Text>
-        <TextInput onChangeText={setAltura} placeholder='Digite sua altura'/>
+      <View style={styles.viewInput}>
+        <TextInput style={styles.input} onChangeText={setAltura} placeholder='Digite sua altura' keyboardType='numeric'/>
       </View>
       
-      <View>
+      <View style={styles.viewInput}>
         <Picker
-          style={{height: 50, width: 300}}
+          style={{height: 50, width: 280, color: "black", backgroundColor: "#DCDCDC"}}
           selectedValue={sexo}
           onValueChange={(itemValue, itemIndex) => setSexo(itemValue)}
         >
@@ -41,11 +40,15 @@ export default function App() {
         </Picker>
       </View>
 
-      <Pressable onPress={calcular}>
-        <Text>calcular peso ideal</Text>
+      <Pressable style={styles.botao} onPress={calcular}>
+        <Text style={styles.texto}>calcular peso ideal</Text>
       </Pressable>
 
-      <Text>{`seu peso ideal é de: ${pesoIdeal}`}</Text>
+      <View style={styles.botaoResultado}>
+        <Text style={styles.textoResultado}>o seu peso ideal é de</Text>
+        <Text style={styles.textoResultado}>{pesoIdeal}</Text>
+      </View>
+
     </View>
   );
 }
